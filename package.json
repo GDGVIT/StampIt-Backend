@@ -1,0 +1,27 @@
+{
+  "name": "gstamps-backend",
+  "version": "1.0.0",
+  "description": "A project to allow users to send GIFs and stickers on Google Meet chat",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhiram-Joshi/GStamps-Backend.git"
+  },
+  "author": "Abhiram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhiram-Joshi/GStamps-Backend/issues"
+  },
+  "homepage": "https://github.com/Abhiram-Joshi/GStamps-Backend#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
