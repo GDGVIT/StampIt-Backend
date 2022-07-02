@@ -4,7 +4,7 @@
   "description": "A project to allow users to send GIFs and stickers on Google Meet chat",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
