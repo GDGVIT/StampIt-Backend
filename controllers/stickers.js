@@ -64,4 +64,23 @@ exports.addStickerToGroup = (req, res, next) => {
             data: null
         })
     })
+};
+
+exports.getGroupStickers = (req, res, next) => {
+    const group_id = req.query.group_id;
+
+    stickerGroupsModel.findOne({_id: group_id}).populate("sticker_ids").then(object => {
+        res.status(200).json({
+            status: "success",
+            message: "Group retrieved successfully",
+            data: object.sticker_ids,
+        })
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            status: "error",
+            message: "Unknown error occured",
+            data: null
+        });
+    })
 }

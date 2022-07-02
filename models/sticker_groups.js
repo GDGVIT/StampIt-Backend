@@ -7,10 +7,9 @@ const stickerGroupSchema = new Schema({
         type: String,
         required: true,
     },
-    sticker_ids: {
-        type: [mongoose.Types.ObjectId],
-        default: [],
-    }
+    sticker_ids: [
+        {type: mongoose.Types.ObjectId, ref: "stickers"},
+    ]
 });
 
 stickerGroupSchema.statics.findOneOrCreate = function(search_params) {
