@@ -42,3 +42,27 @@ exports.getStickers = (req, res, next) => {
         });
     });
 }
+
+exports.addStickerToGroup = (req, res, next) => {
+    const group_name = req.body.group_name;
+    const sticker_id = req.body.sticker_id;
+
+    stickerGroupsModel.findOneOrCreate({name: group_name}).then(object => {
+        console.log(object);
+        object.sticker_ids = [...object.sticker_ids, sticker_id];
+        object.save();
+
+        res.status(200).json({
+            status: "success",
+            message: "Group updated successfully",
+            data: null,
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            status: "error",
+            message: "Unknown error occured",
+            data: null
+        })
+    })
+}
