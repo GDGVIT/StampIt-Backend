@@ -18,7 +18,7 @@ stickerGroupSchema.statics.findOneOrCreate = function(search_params) {
     return this.findOne(search_params).then(object => {
         if(!object)
         {
-            this.create(search_params).then(object => object);
+            return this.create(search_params);
         }
         else
         {

@@ -48,7 +48,6 @@ exports.addStickerToGroup = (req, res, next) => {
     const sticker_id = req.body.sticker_id;
 
     stickerGroupsModel.findOneOrCreate({name: group_name}).then(object => {
-        console.log(object);
         object.sticker_ids = [...object.sticker_ids, sticker_id];
         object.save();
 
