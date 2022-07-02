@@ -83,4 +83,30 @@ exports.getGroupStickers = (req, res, next) => {
             data: null
         });
     })
+};
+
+exports.getAllGroups = (req, res, next) => {
+
+    stickerGroupsModel.find().then(objects => {
+        objects.forEach((element, index, objects) => {
+            objects[index] = {
+                _id: element._id,
+                name: element.name,
+                __v: element.__v,
+            }
+        });
+
+        res.status(200).json({
+            status: "success",
+            message: "Groups retrieved successfully",
+            data: objects,
+        })
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            status: "error",
+            message: "Unknown error occured",
+            data: null
+        });
+    })
 }

@@ -10,6 +10,7 @@ router.post("/create", stickerControllers.createSticker);
 router.get("/get-all", stickerControllers.getStickers);
 router.patch("/add-to-group", stickerControllers.addStickerToGroup);
 router.get("/get-group", stickerControllers.getGroupStickers);
+router.get("/get-all-groups", stickerControllers.getAllGroups);
 
 
 module.exports = router;
