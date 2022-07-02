@@ -1,4 +1,5 @@
-const stickersModel = require('../models/stickers');
+const stickersModel = require("../models/stickers");
+const stickerGroupsModel = require("../models/sticker_groups");
 
 exports.createSticker = (req, res, next) => {
     const name = req.body.name;
@@ -22,5 +23,22 @@ exports.createSticker = (req, res, next) => {
             message: "Unknown error occured",
             data: null
         })
+    });
+}
+
+exports.getStickers = (req, res, next) => {
+    stickersModel.find().then(objects => {
+        res.status(200).json({
+            status: "success",
+            message: "Fetched stickers successfully",
+            data: objects,
+        })
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            status: "error",
+            message: "Unknown error occured",
+            data: null
+        });
     });
 }
