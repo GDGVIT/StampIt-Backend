@@ -6,6 +6,7 @@ const stickerGroupSchema = new Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     sticker_ids: [
         {type: mongoose.Types.ObjectId, ref: "stickers"},
