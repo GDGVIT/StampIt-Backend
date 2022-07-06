@@ -27,7 +27,10 @@ exports.createSticker = (req, res, next) => {
 }
 
 exports.getStickers = (req, res, next) => {
-    stickersModel.find().then(objects => {
+    const page = parseInt(req.query.page) || 1;
+    const page_size = parseInt(req.query.page_size) || 1;
+
+    stickersModel.find().skip((page-1) * page_size).limit(page_size).then(objects => {
         res.status(200).json({
             status: "success",
             message: "Fetched stickers successfully",
@@ -86,8 +89,10 @@ exports.getGroupStickers = (req, res, next) => {
 };
 
 exports.getAllGroups = (req, res, next) => {
+    const page = parseInt(req.query.page) || 1;
+    const page_size = parseInt(req.query.page_size) || 1;
 
-    stickerGroupsModel.find().then(objects => {
+    stickerGroupsModel.find().skip((page-1) * page_size).limit(page_size).then(objects => {
         objects.forEach((element, index, objects) => {
             objects[index] = {
                 _id: element._id,
