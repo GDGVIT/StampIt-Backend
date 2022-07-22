@@ -6,6 +6,7 @@ const cors = require("cors");
 const morgan = require("morgan")
 
 const stickersRouter = require("./routers/stickers");
+const gifsRouter = require("./routers/gifs");
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(morgan(":method\t:url\t:status"))
 
 // Routes
 app.use("/sticker", stickersRouter);
+app.use("/gif", gifsRouter);
 
 
 mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@gstamps.fqjza.mongodb.net/gstamps?retryWrites=true&w=majority`)
