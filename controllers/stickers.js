@@ -26,6 +26,26 @@ exports.createSticker = (req, res, next) => {
     });
 }
 
+exports.getOneSticker = (req, res, next) => {
+    const sticker_id = req.query.sticker_id;
+
+    stickersModel.findOne({_id: sticker_id}).then(object => {
+        console.log(object.data);
+        res.status(200).json({
+            status: "success",
+            message: "Sticker sent successfully",
+            data: object.data,
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({
+                status: "error",
+                message: "Unknown error occured",
+                data: null
+            })
+        })
+    })
+}
+
 exports.getStickers = (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
     const page_size = parseInt(req.query.page_size) || 1;

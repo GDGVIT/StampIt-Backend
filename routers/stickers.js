@@ -7,6 +7,7 @@ const router = express.Router();
 
 
 router.post("/create", stickerControllers.createSticker);
+router.get("/get-one", stickerControllers.getOneSticker);
 router.get("/get-all", stickerControllers.getStickers);
 router.patch("/add-to-group", stickerControllers.addStickerToGroup);
 router.get("/get-group", stickerControllers.getGroupStickers);
