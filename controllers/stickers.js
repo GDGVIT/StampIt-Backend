@@ -67,7 +67,7 @@ exports.getStickers = (req, res, next) => {
 }
 
 exports.addStickerToGroup = (req, res, next) => {
-    const group_id = req.body.group_id;
+    const group_id = req.query.group_id;
     const sticker_id = req.body.sticker_id;
 
     stickerGroupsModel.findOneOrCreate({_id: group_id}).then(object => {
