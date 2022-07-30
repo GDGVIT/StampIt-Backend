@@ -19,6 +19,7 @@ app.use(morgan(":method\t:url\t:status"))
 
 
 // Routes
+app.options("/", cors())
 app.use("/sticker", stickersRouter);
 app.use("/gif", gifsRouter);
 
