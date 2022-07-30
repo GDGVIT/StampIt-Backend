@@ -35,7 +35,7 @@ exports.getOneSticker = (req, res, next) => {
             status: "success",
             message: "Sticker sent successfully",
             data: object.data,
-        }).catch(err => {
+        })}).catch(err => {
             console.log(err);
             res.status(500).json({
                 status: "error",
@@ -43,8 +43,7 @@ exports.getOneSticker = (req, res, next) => {
                 data: null
             })
         })
-    })
-}
+    }
 
 exports.getStickers = (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
