@@ -92,7 +92,7 @@ exports.addStickerToGroup = (req, res, next) => {
 exports.getGroupStickers = (req, res, next) => {
     const group_id = req.query.group_id;
 
-    stickerGroupsModel.findOne({_id: group_id}).populate("sticker_ids").then(object => {
+    stickerGroupsModel.findOne({group_id: group_id}).populate("sticker_ids").then(object => {
         res.status(200).json({
             status: "success",
             message: "Group retrieved successfully",
