@@ -115,7 +115,7 @@ exports.getAllGroups = (req, res, next) => {
     stickerGroupsModel.find().skip((page-1) * page_size).limit(page_size).then(objects => {
         objects.forEach((element, index, objects) => {
             objects[index] = {
-                _id: element._id,
+                group_id: element.group_id,
                 name: element.name,
                 __v: element.__v,
             }
