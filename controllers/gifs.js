@@ -1,6 +1,5 @@
 require("dotenv").config()
 const axios = require("axios");
-const { search } = require("../routers/stickers");
 
 exports.getGifs = (req, res, next) => {
     const search_param = req.query.search;

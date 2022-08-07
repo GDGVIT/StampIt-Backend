@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { search } = require("../routers/stickers");
 
 const Schema = mongoose.Schema;
 
