@@ -30,7 +30,6 @@ exports.getOneSticker = (req, res, next) => {
     const sticker_id = req.query.sticker_id;
 
     stickersModel.findOne({_id: sticker_id}).then(object => {
-        console.log(object.data);
         res.status(200).json({
             status: "success",
             message: "Sticker sent successfully",
@@ -133,5 +132,58 @@ exports.getAllGroups = (req, res, next) => {
             message: "Unknown error occured",
             data: null
         });
+    })
+}
+
+let sticker_timer = {};
+
+exports.addStickerUser = (req, res, next) => {
+    const sticker_id = req.query.sticker_id;
+
+    stickersModel.findOne({_id: sticker_id}).then(object => {
+        clearTimeout(sticker_timer.sticker_id);
+        delete sticker_timer.sticker_id;
+        object.users += 1;
+        object.save();
+
+        res.status(200).json({
+            status: "success",
+            message: "Sticker updated successfully",
+            data: null,
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            status: "error",
+            message: "Unknown error occured",
+            data: null
+        })
+    })
+}
+
+exports.removeStickerUser = (req, res, next) => {
+    const sticker_id = req.query.sticker_id;
+
+    stickersModel.findOne({_id: sticker_id}).then(object => {
+        object.users -= 1;
+        
+        if(object.users <= 0) {
+            sticker_timer.sticker_id = setTimeout(() => {object.remove()}, 20000);
+        }
+        
+        object.save();
+        
+        res.status(200).json({
+            status: "success",
+            message: "Sticker updated successfully",
+            data: null,
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            status: "error",
+            message: "Unknown error occured",
+            data: null
+        })
     })
 }

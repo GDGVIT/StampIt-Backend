@@ -9,6 +9,10 @@ const stickerSchema = new Schema({
     data: {
         type: String,
         required: true
+    },
+    users: {
+        type: Number,
+        default: 0,
     }
 })
 
