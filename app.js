@@ -23,7 +23,7 @@ app.use("/sticker", stickersRouter);
 app.use("/gif", gifsRouter);
 
 
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@gstamps.fqjza.mongodb.net/gstamps?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@gstamps.lbs8z8i.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
         app.listen(process.env.PORT || 3000);
     });
