@@ -14,7 +14,7 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(cors({methods: ["GET", "POST", "PATCH", "DELETE"]}));
+app.use(cors({origin:"https://meet.google.com", methods: ["GET", "POST", "PATCH", "DELETE"]}));
 app.use(morgan(":method\t:url\t:status"))
 
 
