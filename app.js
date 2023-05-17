@@ -17,6 +17,7 @@ app.use(
 		origin: [
 			'https://meet.google.com',
 			'chrome-extension://dnoalbddcffeeifbjakbmgdaljbfeamf',
+			'chrome-extension://lkahibimjoimfhafmkilpgjgaiaamnni',
 		],
 		methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 	})
